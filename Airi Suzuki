@@ -1,11 +1,11 @@
 mixed-port: 9870
-allow-lan: true
-log-level: silent
-external-controller: 127.0.0.1:6216
+allow-lan: false
+mode: rule
+log-level: info
+external-controller: 127.0.0.1:9090
 secret: ''
 ipv6: false
 
-# Will be ignored after profile selection
 proxies:
 
 proxy-groups:
@@ -13,18 +13,78 @@ proxy-groups:
     type: select
     proxies:
       - 节点池-1
+      - 🇨🇳 中国
+      - 🇯🇵 日本
+      - 🇸🇬 新加坡
+      - 🇺🇸 美国
   - name: 节点池-1
     type: select
     use:
       - all
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
+  - name: 🇨🇳 中国
+    type: url-test
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    use:
+      - cn
+  - name: 🇯🇵 日本
+    type: url-test
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    use:
+      - jp
+  - name: 🇸🇬 新加坡
+    type: url-test
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    use:
+      - sg
+  - name: 🇺🇸 美国
+    type: url-test
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    use:
+      - us
 
 proxy-providers:
   all:
     type: http
     url: "https://proxypoolss.tk/clash/proxies?speed=77"
     path: ./Proxy/proxypoolss/provider.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  cn:
+    type: http
+    url: "https://proxypool.ga/clash/proxies?c=CN,HK,TW"
+    path: proxypool.ga/provider-cn.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  us:
+    type: http
+    url: "https://proxypool.ga/clash/proxies?c=US"
+    path: proxypool.ga/provider-us.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  jp:
+    type: http
+    url: "https://proxypool.ga/clash/proxies?c=JP"
+    path: proxypool.ga/provider-jp.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  sg:
+    type: http
+    url: "https://proxypool.ga/clash/proxies?c=SG"
+    path: proxypool.ga/provider-sg.yaml
     health-check:
       enable: true
       interval: 600
