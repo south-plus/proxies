@@ -7,15 +7,11 @@ ipv6: false
 
 # Will be ignored after profile selection
 proxies:
-  - name: Debug
-    type: socks5
-    server: 127.0.0.1
-    port: 1080
+
 proxy-groups:
   - name: PROXY
     type: select
     proxies:
-      - Debug
       - 节点池-1
   - name: 节点池-1
     type: select
