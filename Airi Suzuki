@@ -66,7 +66,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   pool2:
     type: http
-    url: "https://subconverter.herokuapp.com/sub?target=clash&new_name=true&url=https%3A%2F%2Fraw.fastgit.org%2Ffreefq%2Ffree%2Fmaster%2Fssr%7Chttps%3A%2F%2Fraw.fastgit.org%2Ffreefq%2Ffree%2Fmaster%2Fv2&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FACL4SSR%2FACL4SSR%2Fmaster%2FClash%2Fconfig%2FACL4SSR_Online.ini&emoji=true&list=true&udp=false&tfo=false&scv=false&fdn=false&sort=false"
+    url: "https://sspool.herokuapp.com/clash/proxies?speed=150"
     path: ./Proxy/proxypoolss/provider2.yaml
     health-check:
       enable: true
