@@ -1,0 +1,226 @@
+mixed-port: 9870
+allow-lan: false
+mode: rule
+log-level: info
+external-controller: 127.0.0.1:9090
+secret: ''
+ipv6: false
+
+proxies:
+
+proxy-groups:
+  - name: PROXY
+    type: select
+    proxies:
+      - 节点池-1
+      - 节点池-2
+      - 🇨🇳 中国
+      - 🇯🇵 日本
+      - 🇸🇬 新加坡
+      - 🇺🇸 美国
+  - name: 节点池-1
+    type: select
+    use:
+      - all
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+  - name: 节点池-2
+    type: select
+    use:
+      - pool2
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+  - name: 🇨🇳 中国
+    type: url-test
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    use:
+      - cn
+  - name: 🇯🇵 日本
+    type: url-test
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    use:
+      - jp
+  - name: 🇸🇬 新加坡
+    type: url-test
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    use:
+      - sg
+  - name: 🇺🇸 美国
+    type: url-test
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    use:
+      - us
+
+proxy-providers:
+  all:
+    type: http
+    url: "https://proxypoolss.tk/clash/proxies?speed=10"
+    path: ./Proxy/proxypoolss/provider.yaml
+    health-check:
+      enable: false
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  pool2:
+    type: http
+    url: "https://sspool.herokuapp.com/clash/proxies?speed=10"
+    path: ./Proxy/proxypoolss/provider2.yaml
+    health-check:
+      enable: false
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  cn:
+    type: http
+    url: "https://proxypool.ga/clash/proxies?c=CN,HK,TW"
+    path: proxypool.ga/provider-cn.yaml
+    health-check:
+      enable: false
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  us:
+    type: http
+    url: "https://proxypool.ga/clash/proxies?c=US"
+    path: proxypool.ga/provider-us.yaml
+    health-check:
+      enable: false
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  jp:
+    type: http
+    url: "https://proxypool.ga/clash/proxies?c=JP"
+    path: proxypool.ga/provider-jp.yaml
+    health-check:
+      enable: false
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  sg:
+    type: http
+    url: "https://proxypool.ga/clash/proxies?c=SG"
+    path: proxypool.ga/provider-sg.yaml
+    health-check:
+      enable: false
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+
+rule-providers:
+  reject:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+    path: ./ruleset/reject.yaml
+    interval: 86400
+
+  icloud:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
+    path: ./ruleset/icloud.yaml
+    interval: 86400
+
+  apple:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
+    path: ./ruleset/apple.yaml
+    interval: 86400
+
+  google:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
+    path: ./ruleset/google.yaml
+    interval: 86400
+
+  proxy:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+
+  direct:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
+    path: ./ruleset/direct.yaml
+    interval: 86400
+
+  private:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
+    path: ./ruleset/private.yaml
+    interval: 86400
+
+  gfw:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+
+  greatfire:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/greatfire.txt"
+    path: ./ruleset/greatfire.yaml
+    interval: 86400
+
+  tld-not-cn:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
+    path: ./ruleset/tld-not-cn.yaml
+    interval: 86400
+
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+
+  lancidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
+    path: ./ruleset/lancidr.yaml
+    interval: 86400
+
+rules:
+  - PROCESS-NAME,v2ray,DIRECT
+  - PROCESS-NAME,Surge%203,DIRECT
+  - PROCESS-NAME,ss-local,DIRECT
+  - PROCESS-NAME,privoxy,DIRECT
+  - PROCESS-NAME,trojan,DIRECT
+  - PROCESS-NAME,trojan-go,DIRECT
+  - PROCESS-NAME,naive,DIRECT
+  - PROCESS-NAME,Thunder,DIRECT
+  - PROCESS-NAME,DownloadService,DIRECT
+  - PROCESS-NAME,qBittorrent,DIRECT
+  - PROCESS-NAME,Transmission,DIRECT
+  - PROCESS-NAME,fdm,DIRECT
+  - PROCESS-NAME,aria2c,DIRECT
+  - PROCESS-NAME,Folx,DIRECT
+  - PROCESS-NAME,NetTransport,DIRECT
+  - PROCESS-NAME,uTorrent,DIRECT
+  - PROCESS-NAME,WebTorrent,DIRECT
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,reject,REJECT
+  - RULE-SET,tld-not-cn,PROXY
+  - RULE-SET,gfw,PROXY
+  - RULE-SET,greatfire,PROXY
+  - RULE-SET,telegramcidr,PROXY
+  - MATCH,DIRECT
