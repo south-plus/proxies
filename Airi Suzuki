@@ -73,7 +73,7 @@ proxy-providers:
   pool1-2:
     type: http
     url: "https://proxypoolss.tk/clash/proxies?speed=50,77"
-    path: ./Proxy/proxypoolss/provider.yaml
+    path: ./Proxy/proxypoolss/provider50-77.yaml
     health-check:
       enable: true
       interval: 600
