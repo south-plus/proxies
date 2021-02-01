@@ -22,7 +22,7 @@ external-controller: 127.0.0.1:9090
 proxies:
 
 proxy-groups:
-  - name: 全局选择
+  - name: PROXY
     type: select
     proxies:
       - 延迟最低
