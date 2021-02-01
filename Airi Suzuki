@@ -94,8 +94,8 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   pool1-3:
     type: http
-    url: "https://proxypoolss.tk/clash/proxies?speed=30,50"
-    path: ./Proxy/proxypoolss/provider30-50.yaml
+    url: "https://proxypoolss.tk/clash/proxies?speed=35,50"
+    path: ./Proxy/proxypoolss/provider35-50.yaml
     health-check:
       enable: true
       interval: 600
