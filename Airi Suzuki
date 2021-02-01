@@ -58,7 +58,7 @@ proxy-groups:
 proxy-providers:
   all:
     type: http
-    url: "https://proxypoolss.tk/clash/proxies?speed=77"
+    url: "https://proxypoolss.tk/clash/proxies?speed=10"
     path: ./Proxy/proxypoolss/provider.yaml
     health-check:
       enable: true
