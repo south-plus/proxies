@@ -61,7 +61,7 @@ proxy-providers:
     url: "https://proxypoolss.tk/clash/proxies?speed=10"
     path: ./Proxy/proxypoolss/provider.yaml
     health-check:
-      enable: true
+      enable: false
       interval: 600
       url: http://www.gstatic.com/generate_204
   pool2:
@@ -69,7 +69,7 @@ proxy-providers:
     url: "https://sspool.herokuapp.com/clash/proxies?speed=10"
     path: ./Proxy/proxypoolss/provider2.yaml
     health-check:
-      enable: true
+      enable: false
       interval: 600
       url: http://www.gstatic.com/generate_204
   cn:
