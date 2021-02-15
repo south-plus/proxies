@@ -51,25 +51,25 @@ proxy-groups:
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
   - name: 🇨🇳 中国
-    type: url-test
+    type: select
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
     use:
       - cn
   - name: 🇯🇵 日本
-    type: url-test
+    type: select
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
     use:
       - jp
   - name: 🇸🇬 新加坡
-    type: url-test
+    type: select
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
     use:
       - sg
   - name: 🇺🇸 美国
-    type: url-test
+    type: select
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
     use:
